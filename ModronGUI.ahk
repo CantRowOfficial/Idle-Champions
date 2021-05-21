@@ -89,7 +89,7 @@ global gSwapSleep := SwapSleep
 IniRead, RestartStackTime, UserSettings.ini, Section1, RestartStackTime, 12000
 global gRestartStackTime := RestartStackTime
 ;Intall location
-IniRead, GameInstallPath, Usersettings.ini, Section1, GameInstallPath, C:\Program Files (x86)\Steam\steamapps\common\IdleChampions\IdleDragons.exe
+IniRead, GameInstallPath, Usersettings.ini, Section1, GameInstallPath, explorer.exe "com.epicgames.launcher://apps/40cb42e38c0b4a14a1bb133eb3291572?action=launch&silent=true"
 global gInstallPath := GameInstallPath
 ;Modron Reset Check
 IniRead, ModronResetCheckEnabled, UserSettings.ini, Section1, ModronResetCheckEnabled
@@ -195,6 +195,8 @@ Gui, MyWindow:Add, Text, x15 y+10, Known Issues:
 Gui, MyWindow:Add, Text, x15 y+2, 1. Cannot fully interact with `GUI `while script is running.
 Gui, MyWindow:Add, Text, x15 y+2 w10, 2. 
 Gui, MyWindow:Add, Text, x+2 w370, Using Hew's ult throughout a run with Briv swapping can result in Havi's ult being triggered instead. Consider removing Havi from formation save slot 3, in game `hotkey "E".
+Gui, MyWindow:Add, Text, x15 y+2 w10, 3. 
+Gui, MyWindow:Add, Text, x+2 w370, Conflict between Epic Games Store and IdleCombos script. Close IdleCombos if Briv Restart Stacking as EGS will see IdleCombos as an instance of IC. 
 
 Gui, Tab, Settings
 Gui, MyWindow:Add, Text, x15 y30 w120, Seats to level with Fkeys:
@@ -234,7 +236,7 @@ Gui, MyWindow:Add, Checkbox, vgAvoidBosses Checked%gAvoidBosses% x15 y+10, Swap 
 Gui, MyWindow:Add, Checkbox, vgClickLeveling Checked%gClickLeveling% x15 y+5, `Uncheck `if using a familiar `on `click damage
 Gui, MyWindow:Add, Checkbox, vgStackFailRecovery Checked%gStackFailRecovery% x15 y+5, Enable manual resets to recover from failed Briv stacking
 Gui, MyWindow:Add, Checkbox, vgStackFailConvRecovery Checked%gStackFailConvRecovery% x15 y+5, Enable manual resets to recover from failed Briv stack conversion
-Gui, MyWindow:Add, Checkbox, vgModronResetCheckEnabled Checked%gModronResetCheckEnabled% x15 y+5, Have script check for Modron reset level
+;Gui, MyWindow:Add, Checkbox, vgModronResetCheckEnabled Checked%gModronResetCheckEnabled% x15 y+5, Have script check for Modron reset level
 Gui, MyWindow:Add, Checkbox, vgDoChests Checked%gDoChests% x15 y+10, Enable server calls to buy and open chests during stack restart
 Gui, MyWindow:Add, Edit, vNewSCMinGemCount x15 y+10 w100, % gSCMinGemCount
 Gui, MyWindow:Add, Text, x+5, Maintain this many gems when buying chests
@@ -247,6 +249,7 @@ Gui, MyWindow:Add, Text, x+5, When there are sufficient gems, buy this many Gold
 Gui, MyWindow:Add, Edit, vNewSCGoldCount x15 y+10 w50, % gSCGoldCount
 Gui, MyWindow:Add, Text, x+5, When there are this many gold chests, open them
 Gui, MyWindow:Add, Button, x15 y+20 gChangeInstallLocation_Clicked, Change Install Path
+Gui, MyWindow:Add, Text, x+5, Default installation path may be EGS client specific. If launch fails, make a shortcut through EGS and replace default path with new.
 
 Gui, Tab, Help
 ;Gui, MyWindow:Font, w700
