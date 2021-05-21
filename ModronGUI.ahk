@@ -1,7 +1,8 @@
 #SingleInstance force
-;Modron Automation Gem Farming Script
+;Modron Automation Gem Farming Script for Epic Games Store
 ;by mikebaldi1980
-global ScriptDate := "5/12/21"
+;modified by CantRow for Epic Games Store Compatibility 
+global ScriptDate := "5/20/21"
 ;put together with the help from many different people. thanks for all the help.
 SetWorkingDir, %A_ScriptDir%
 CoordMode, Mouse, Client
@@ -602,9 +603,27 @@ Pause
 gPrevLevelTime := A_TickCount
 return
 
+;Solution by Meviin to release Alt, Shift, and Ctrl keys when they get stuck during script use.
+ReleaseStuckKeys()                                           
+{                                                            
+    if GetKeyState("Alt") && !GetKeyState("Alt", "P")        
+    {                                                        
+      Send {Alt up}                                          
+    }                                                        
+    if GetKeyState("Shift") && !GetKeyState("Shift", "P")    
+    {                                                        
+      Send {Shift up}                                        
+    }                                                        
+    if GetKeyState("Control") && !GetKeyState("Control", "P")
+    {                                                        
+      Send {Control up}                                      
+    }                                                        
+}
+
 SafetyCheck() 
 {
-    While (Not WinExist("ahk_exe IdleDragons.exe")) 
+    ReleaseStuckKeys()
+	While (Not WinExist("ahk_exe IdleDragons.exe")) 
     {
 		Run, %gInstallPath%
         ;Run, "C:\Program Files (x86)\Steam\steamapps\common\IdleChampions\IdleDragons.exe"
@@ -715,6 +734,7 @@ LevelChampByID(ChampID := 1, Lvl := 0, i := 5000, j := "q", seat := 1)
 
 DoDashWait()
 {
+	ReleaseStuckKeys()
 	DirectedInput("g")
 	LevelChampByID(47, 120, 5000, "q", 6)
     StartTime := A_TickCount
@@ -736,6 +756,7 @@ DoDashWait()
 	While (ReadTimeScaleMultiplier(1) < DashSpeed AND ElapsedTime < modDashSleep)
 	{
 		StuffToSpam(0, 1, 0)
+		ReleaseStuckKeys()
 		ElapsedTime := UpdateElapsedTime(StartTime)
 		UpdateStatTimers()
 	}
@@ -757,6 +778,7 @@ DoUlts()
 	GuiControl, MyWindow:, gloopID, Spamming Ults for 2s
 	while (ElapsedTime < 2000)
 	{
+		ReleaseStuckKeys()
 		DirectedInput("23456789")
 		ElapsedTime := UpdateElapsedTime(StartTime)
 		UpdateStatTimers()
@@ -765,6 +787,7 @@ DoUlts()
 
 DirectedInput(s) 
 {
+	ReleaseStuckKeys()
 	SafetyCheck()
 	ControlFocus,, ahk_exe IdleDragons.exe
 	ControlSend,, {Blind}%s%, ahk_exe IdleDragons.exe
@@ -813,6 +836,7 @@ LoadingZone()
     GuiControl, MyWindow:, gloopID, Loading Zone
 	while (!ReadChampLvlBySlot(1,,gShandieSlot) AND ElapsedTime < 60000)
 	{
+		ReleaseStuckKeys()
 		DirectedInput("q{F6}")
 		ElapsedTime := UpdateElapsedTime(StartTime)
 		UpdateStatTimers()
@@ -836,12 +860,13 @@ LoadingZone()
 
 CheckSetUp()
 {
+	ReleaseStuckKeys()
 	;find core target reset area so script does not try and Briv stack before a modron reset happens.
 	gCoreTargetArea := ReadCoreTargetArea(1)
 	;confirm target area has been read
 	if (!gModronResetCheckEnabled)
 	{
-		gCoreTargetArea := 999
+		gCoreTargetArea := 146
 	}
 	Else
 	{
@@ -858,14 +883,14 @@ CheckSetUp()
 			}
 			IfMsgBox, ignore
 			{
-				gCoreTargetArea := 999
+				gCoreTargetArea := 146
 			}
 		}
 	}
 	;will need to add more here eventually
 	if (gCoreTargetArea < gAreaLow)
 	{
-		gCoreTargetArea := 999
+		gCoreTargetArea := 146
 	}
 	StartTime := A_TickCount
 	ElapsedTime := 0
@@ -1040,6 +1065,7 @@ StackNormal()
 	stacks := GetNumStacksFarmed()
 	while (stacks < gSBTargetStacks AND ElapsedTime < gSBTimeMax)
 	{
+		ReleaseStuckKeys()
 		directedinput("w")
         if (ReadCurrentZone(1) <= gAreaLow) 
 		{
@@ -1067,6 +1093,7 @@ StackFarm()
 	;send input Left while on a boss zone
 	while (!mod(ReadCurrentZone(1), 5))
 	{
+		ReleaseStuckKeys()
 		DirectedInput("{Left}")
 	}
 	if gRestartStackTime
@@ -1080,6 +1107,7 @@ StackFarm()
 
 UpdateStartLoopStats(gLevel_Number)
 {
+	ReleaseStuckKeys()
 	if (gTotal_RunCount = 0)
 	{
 		gStartTime := A_TickCount
@@ -1149,12 +1177,13 @@ UpdateStartLoopStats(gLevel_Number)
 
 UpdateStatTimers()
 {
+	ReleaseStuckKeys()
 	dtCurrentRunTime := Round((A_TickCount - gRunStartTime) / 60000, 2)
 	GuiControl, MyWindow:, dtCurrentRunTimeID, % dtCurrentRunTime
 	dtTotalTime := Round((A_TickCount - gStartTime) / 3600000, 2)
 	GuiControl, MyWindow:, dtTotalTimeID, % dtTotalTime
 	dtCurrentLevelTime := Round((A_TickCount - gPrevLevelTime) / 1000, 2)
-	GuiControl, MyWindow:, dtCurrentLevelTimeID, % dtCurrentLevelTime	
+	GuiControl, MyWindow:, dtCurrentLevelTimeID, % dtCurrentLevelTime
 }
 
 UpdateElapsedTime(StartTime)
@@ -1166,6 +1195,7 @@ UpdateElapsedTime(StartTime)
 
 GemFarm() 
 {  
+	ReleaseStuckKeys()
 	OpenProcess()
 	ModuleBaseAddress()
 	;not sure why this one is here, commented out for now.
@@ -1260,7 +1290,7 @@ GemFarm()
 			gPrevLevelTime := A_TickCount
 			gprevLevel := ReadCurrentZone(1)
 		}
-
+		
 		CheckifStuck(gLevel_Number)
 		UpdateStatTimers()
     }
@@ -1354,11 +1384,12 @@ EndAdventure()
 
 StuffToSpam(SendRight := 1, gLevel_Number := 1, hew := 1, formation := "")
 {
+	ReleaseStuckKeys()
 	var :=
 	if (SendRight)
 	var := "{Right}"
 	if (gClickLeveling)
-	var := var "{Ctrl down}``{Ctrl up}"
+	var := var "``"
 	if (gContinuedLeveling > gLevel_Number)
 	var := var gFKeys
 	if (gHewUlt AND hew)
