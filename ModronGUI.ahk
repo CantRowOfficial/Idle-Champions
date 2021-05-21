@@ -165,9 +165,9 @@ Gui, MyWindow:Add, Text, x15 y+10, Instructions:
 Gui, MyWindow:Add, Text, x15 y+2 w10, 1.
 Gui, MyWindow:Add, Text, x+2 w370, Save your speed formation in formation save slot 1, in game `hotkey "Q". This formation must include Shandie, Briv, and at least one familiar on the field.
 Gui, MyWindow:Add, Text, x15 y+2 w10, 2.
-Gui, MyWindow:Add, Text, x+2 w370, Save your stack farming formation in formation save slot 2, in game `hotkey "W". Don't include any familiars on the field or any champions in the formation slot Shandie is in as part of formation save slot 1.
+Gui, MyWindow:Add, Text, x+2 w370, Save your stack farming formation in formation save slot 2, in game `hotkey "W". Don't include any familiars on the field or any champions in the formation slot that Shandie is in as part of formation "Q" - save slot 1.
 Gui, MyWindow:Add, Text, x15 y+2 w10, 3.
-Gui, MyWindow:Add, Text, x+2 w370, Save your speed formation without Briv, Hew, or Melf in formation save slot 3, in game `hotkey "E". This step may be ommitted if you will not be swapping out Briv to cancel his jump animation.
+Gui, MyWindow:Add, Text, x+2 w370, Save your speed formation without Briv, Hew, Havi, or Melf in formation save slot 3, in game `hotkey "E". This step may be ommitted if you will not be swapping out Briv to cancel his jump animation.
 Gui, MyWindow:Add, Text, x15 y+2, 4. Adjust the settings on the settings tab.
 Gui, MyWindow:Add, Text, x15 y+2, 5. `Click the save button to save your settings.
 Gui, MyWindow:Add, Text, x15 y+2, 6. Load into zone 1 of an adventure to farm gems.
