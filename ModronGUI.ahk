@@ -163,9 +163,9 @@ Gui, MyWindow:Add, Text, x15 y30, Gem Farm, %ScriptDate%
 Gui, MyWindow:Font, w400
 Gui, MyWindow:Add, Text, x15 y+10, Instructions:
 Gui, MyWindow:Add, Text, x15 y+2 w10, 1.
-Gui, MyWindow:Add, Text, x+2 w370, Save your speed formation in formation save slot 1, in game `hotkey "Q". This formation must include Shandie, Briv, and at least one familiar on the field.
+Gui, MyWindow:Add, Text, x+2 w360, Save your speed formation in formation save slot 1, in game `hotkey "Q". This formation must include Shandie, Briv, and at least one familiar on the field.
 Gui, MyWindow:Add, Text, x15 y+2 w10, 2.
-Gui, MyWindow:Add, Text, x+2 w370, Save your stack farming formation in formation save slot 2, in game `hotkey "W". Don't include any familiars on the field or any champions in the formation slot that Shandie is in as part of formation "Q" - save slot 1.
+Gui, MyWindow:Add, Text, x+2 w360, Save your stack farming formation in formation save slot 2, in game `hotkey "W". Don't include any familiars on the field or any champions in the formation slot that Shandie is in as part of formation "Q" - save slot 1.
 Gui, MyWindow:Add, Text, x15 y+2 w10, 3.
 Gui, MyWindow:Add, Text, x+2 w370, Save your speed formation without Briv, Hew, Havi, or Melf in formation save slot 3, in game `hotkey "E". This step may be ommitted if you will not be swapping out Briv to cancel his jump animation.
 Gui, MyWindow:Add, Text, x15 y+2, 4. Adjust the settings on the settings tab.
@@ -178,25 +178,25 @@ Gui, MyWindow:Add, Text, x15 y+2, 2. Don't forget to unpause after saving your s
 Gui, MyWindow:Add, Text, x15 y+2, 3. First run is ignored for stats, in case it is a partial run.
 Gui, MyWindow:Add, Text, x15 y+2, 4. Settings save to and load from UserSettings.ini file.
 Gui, MyWIndow:Add, Text, x15 y+2 w10, 5.
-Gui, MyWIndow:Add, Text, x+2 w370, Recommended SB stack level is [Modron Reset Zone] - X, with X = 4 for single skip, X = 6 for double skip, X = 8 for triple skip, and X = 10 for quadruple skip.
+Gui, MyWIndow:Add, Text, x+2 w360, Recommended SB stack level is [Modron Reset Zone] - X, with X = 4 for single skip, X = 6 for double skip, X = 8 for triple skip, and X = 10 for quadruple skip.
 Gui, MyWindow:Add, Text, x15 y+2 w10, 6.
 Gui, MyWindow:Add, Text, x+2 w370, Script will activate and focus the game window for manual resets as part of failed stacking.
 Gui, MyWIndow:Add, Text, x15 y+2 w10, 7.
-Gui, MyWIndow:Add, Text, x+2 w370, Script communicates directly with Idle Champions play servers to recover from a failed stacking and for when Modron resets to the World Map.
+Gui, MyWIndow:Add, Text, x+2 w360, Script communicates directly with Idle Champions play servers to recover from a failed stacking and for when Modron resets to the World Map.
 Gui, MyWIndow:Add, Text, x15 y+2 w10, 8.
 Gui, MyWIndow:Add, Text, x+2 w370, Script reads system memory.
 Gui, MyWIndow:Add, Text, x15 y+2 w10, 9.
 Gui, MyWIndow:Add, Text, x+2 w370, The script does not work without Shandie.
 Gui, MyWIndow:Add, Text, x15 y+2 w10, 10.
-Gui, MyWIndow:Add, Text, x+2 w370, Disable manual resets to recover from failed Briv stack conversions when running event free plays.
+Gui, MyWIndow:Add, Text, x+2 w360, Disable manual resets to recover from failed Briv stack conversions when running event free plays.
 Gui, MyWIndow:Add, Text, x15 y+2 w10, 11.
-Gui, MyWIndow:Add, Text, x+2 w370, Recommended Briv swap `sleep time is betweeb 1500 - 3000. If you are seeing Briv's landing animation then increase the the swap sleep time. If Briv is not back in the formation before monsters can be killed then decrease the swap sleep time.
+Gui, MyWIndow:Add, Text, x+2 w360, Recommended Briv swap `sleep time is betweeb 1500 - 3000. If you are seeing Briv's landing animation then increase the the swap sleep time. If Briv is not back in the formation before monsters can be killed then decrease the swap sleep time.
 Gui, MyWindow:Add, Text, x15 y+10, Known Issues:
 Gui, MyWindow:Add, Text, x15 y+2, 1. Cannot fully interact with `GUI `while script is running.
 Gui, MyWindow:Add, Text, x15 y+2 w10, 2. 
-Gui, MyWindow:Add, Text, x+2 w370, Using Hew's ult throughout a run with Briv swapping can result in Havi's ult being triggered instead. Consider removing Havi from formation save slot 3, in game `hotkey "E".
+Gui, MyWindow:Add, Text, x+2 w360, Using Hew's ult throughout a run with Briv swapping can result in Havi's ult being triggered instead. Consider removing Havi from formation save slot 3, in game `hotkey "E".
 Gui, MyWindow:Add, Text, x15 y+2 w10, 3. 
-Gui, MyWindow:Add, Text, x+2 w370, Conflict between Epic Games Store and IdleCombos script. Close IdleCombos if Briv Restart Stacking as EGS will see IdleCombos as an instance of IC. 
+Gui, MyWindow:Add, Text, x+2 w370, Conflict between Epic Games Store and IdleCombos.exe script. Close IdleCombos if Briv Restart Stacking as EGS will see IdleCombos as an instance of IC. 
 
 Gui, Tab, Settings
 Gui, MyWindow:Add, Text, x15 y30 w120, Seats to level with Fkeys:
@@ -249,7 +249,7 @@ Gui, MyWindow:Add, Text, x+5, When there are sufficient gems, buy this many Gold
 Gui, MyWindow:Add, Edit, vNewSCGoldCount x15 y+10 w50, % gSCGoldCount
 Gui, MyWindow:Add, Text, x+5, When there are this many gold chests, open them
 Gui, MyWindow:Add, Button, x15 y+20 gChangeInstallLocation_Clicked, Change Install Path
-Gui, MyWindow:Add, Text, x+5 w240, Default installation path may be EGS client specific. If launch fails, make a shortcut through EGS and replace default path with new.
+Gui, MyWindow:Add, Text, x+5 w240, Default installation path may be EGS client specific. If launch fails, make a shortcut through EGS and replace default path with new app launcher `ID.
 
 Gui, Tab, Help
 ;Gui, MyWindow:Font, w700
@@ -1407,6 +1407,6 @@ StuffToSpam(SendRight := 1, gLevel_Number := 1, hew := 1, formation := "")
 TestResetFunction()
 {
 	Controller := idle.getAddressFromOffsets(pointerBaseController, arrayPointerOffsetsController*)
-	arrayPointerOffsetsModronTA := [0x8, 0x40, 0x1C, 0x30]
+	arrayPointerOffsetsModronTA := [0x10, 0x80, 0x38, 0x54]
 	idle.write(Controller, 5, "Int", arrayPointerOffsetsModronTA*)
 }
