@@ -236,7 +236,7 @@ Gui, MyWindow:Add, Checkbox, vgAvoidBosses Checked%gAvoidBosses% x15 y+10, Swap 
 Gui, MyWindow:Add, Checkbox, vgClickLeveling Checked%gClickLeveling% x15 y+5, `Uncheck `if using a familiar `on `click damage
 Gui, MyWindow:Add, Checkbox, vgStackFailRecovery Checked%gStackFailRecovery% x15 y+5, Enable manual resets to recover from failed Briv stacking
 Gui, MyWindow:Add, Checkbox, vgStackFailConvRecovery Checked%gStackFailConvRecovery% x15 y+5, Enable manual resets to recover from failed Briv stack conversion
-;Gui, MyWindow:Add, Checkbox, vgModronResetCheckEnabled Checked%gModronResetCheckEnabled% x15 y+5, Have script check for Modron reset level
+Gui, MyWindow:Add, Checkbox, vgModronResetCheckEnabled Checked%gModronResetCheckEnabled% x15 y+5, Have script check for Modron reset level
 Gui, MyWindow:Add, Checkbox, vgDoChests Checked%gDoChests% x15 y+10, Enable server calls to buy and open chests during stack restart
 Gui, MyWindow:Add, Edit, vNewSCMinGemCount x15 y+10 w100, % gSCMinGemCount
 Gui, MyWindow:Add, Text, x+5, Maintain this many gems when buying chests
@@ -869,7 +869,7 @@ CheckSetUp()
 	;confirm target area has been read
 	if (!gModronResetCheckEnabled)
 	{
-		gCoreTargetArea := 146
+		gCoreTargetArea := 999
 	}
 	Else
 	{
@@ -886,14 +886,14 @@ CheckSetUp()
 			}
 			IfMsgBox, ignore
 			{
-				gCoreTargetArea := 146
+				gCoreTargetArea := 999
 			}
 		}
 	}
 	;will need to add more here eventually
 	if (gCoreTargetArea < gAreaLow)
 	{
-		gCoreTargetArea := 146
+		gCoreTargetArea := 999
 	}
 	StartTime := A_TickCount
 	ElapsedTime := 0
