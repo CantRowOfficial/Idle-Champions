@@ -1,0 +1,15 @@
+Date of Update: 5/22/21
+
+Issues/Fixes Needed
+-------------------
+
+   1. Haste stacks not displayed on Stats tab while SteelBones are. Debug tab shows accurate SteelBones and Haste stacks. Identical code to mikebaldi's Steam ModronGUI that properly shows Haste Stacks.
+   
+   2. Epic Games Store treats IdleCombos.exe as an instance of IdleDragons.exe. EGS will not allow IC to relaunch during Briv Restart Stacking if IdleCombos.exe is running. Steam does not have this issue. Further investigation needed.
+   
+Future Planned Updates/Features
+-------------------------------
+
+	1. Create secondary NonModronGUI for memory scripted restarts without Modron Automation from ModronGUI.ahk and ManualModronResetSnippets.ahk from Meviin.
+	
+	2. 
