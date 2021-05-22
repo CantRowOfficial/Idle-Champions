@@ -249,7 +249,7 @@ Gui, MyWindow:Add, Text, x+5, When there are sufficient gems, buy this many Gold
 Gui, MyWindow:Add, Edit, vNewSCGoldCount x15 y+10 w50, % gSCGoldCount
 Gui, MyWindow:Add, Text, x+5, When there are this many gold chests, open them
 Gui, MyWindow:Add, Button, x15 y+20 gChangeInstallLocation_Clicked, Change Install Path
-Gui, MyWindow:Add, Text, x+5, Default installation path may be EGS client specific. If launch fails, make a shortcut through EGS and replace default path with new.
+Gui, MyWindow:Add, Text, x+5 w240, Default installation path may be EGS client specific. If launch fails, make a shortcut through EGS and replace default path with new.
 
 Gui, Tab, Help
 ;Gui, MyWindow:Font, w700
