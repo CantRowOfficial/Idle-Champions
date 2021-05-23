@@ -2,7 +2,7 @@
 ;Modron Automation Gem Farming Script for Epic Games Store
 ;by mikebaldi1980
 ;modified by CantRow for Epic Games Store Compatibility 
-global ScriptDate := "5/22/21"
+global ScriptDate := "5/23/21"
 ;put together with the help from many different people. thanks for all the help.
 SetWorkingDir, %A_ScriptDir%
 CoordMode, Mouse, Client
@@ -313,10 +313,10 @@ Gui, MyWindow:Font, w700
 Gui, MyWindow:Add, Text, x15 y33, Stats updated continuously (mostly):
 Gui, MyWindow:Font, w400
 Gui, MyWindow:Add, Text, x15 y+10 %statTabTxtWidth%, SB Stack `Count: 
-Gui, MyWindow:Add, Text, vgStackCountSBID x+2 w50, % gStackCountSB
+Gui, MyWindow:Add, Text, vgStackCountSBID x+2 w100, % gStackCountSB
 ;Gui, MyWindow:Add, Text, vReadSBStacksID x+2 w200,
 Gui, MyWindow:Add, Text, x15 y+2 %statTabTxtWidth%, Haste Stack `Count:
-Gui, MyWindow:Add, Text, vgStackCountHID x+2 w50, % gStackCountH ;Not displaying haste stacks but does SB?
+Gui, MyWindow:Add, Text, vgStackCountHID x+2 w100, % gStackCountH
 ;Gui, MyWindow:Add, Text, vReadHasteStacksID x+2 w200,
 Gui, MyWindow:Add, Text, x15 y+10 %statTabTxtWidth%, Current `Run `Time:
 Gui, MyWindow:Add, Text, vdtCurrentRunTimeID x+2 w50, % dtCurrentRunTime
