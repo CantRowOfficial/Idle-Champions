@@ -1,5 +1,5 @@
 ;Updates installed after the date of this script may result in the pointer addresses no longer being accurate.
-;date of script: 5/20/21
+;date of script: 5/23/21
 ;Epic Games IC Version v0.391
 
 global idle := new _ClassMemory("ahk_exe IdleDragons.exe", "", hProcessCopy)
@@ -112,11 +112,13 @@ ReadHasteStacks(UpdateGUI := 0, GUIwindow := "MyWindow:")
     pointerArray := [0xA0, 0x30, 0x2E4]
     var := idle.read(Controller, "Int", pointerArray*)
     if UpdateGUI
-    GuiControl, %GUIwindow%, ReadHasteStacksID, %var% %A_Hour%:%A_Min%:%A_Sec%.%A_MSec%
+	{
+		GuiControl, %GUIwindow%, ReadHasteStacksID, %var% %A_Hour%:%A_Min%:%A_Sec%.%A_MSec%
+		GuiControl, %GUIwindow%, gStackCountHID, %var%
+	}
 	return var
 }
 
-;USED OFFSET 0x50 NAMED ExpTotal - CantRow
 ReadCoreXP(UpdateGUI := 0, GUIwindow := "MyWindow:")
 {
     Controller := idle.getAddressFromOffsets(pointerBaseController, arrayPointerOffsetsController*)
@@ -127,7 +129,6 @@ ReadCoreXP(UpdateGUI := 0, GUIwindow := "MyWindow:")
 	return var
 }
 
-;USED OFFSET 0x54 NAMED targetArea - CantRow
 ReadCoreTargetArea(UpdateGUI := 0, GUIwindow := "MyWindow:")
 {
     Controller := idle.getAddressFromOffsets(pointerBaseController, arrayPointerOffsetsController*)
