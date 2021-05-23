@@ -1,5 +1,7 @@
 Warning: This script reads system memory. I do not know CNE's stance on reading system memory used by the game, so use at your own risk. Pointers may break on any given update and I may no longer decide to update them.
 
+This repository and scripts therein are specifically tailored to Idle Champions ran through the Epic Games Store. These scripts will not work without modification for other platforms and their specific memory pointers.
+
 Instructions for ModronGUI.AHK:
 1. Download and install AutoHotkey: https://www.autohotkey.com/
 2. Download ModronGUI.AHK, IC_MemoryFunctions.AHK, IC_ServerCallFunctions.AHK, json.AHK, and classMemory.AHK to the same folder.
