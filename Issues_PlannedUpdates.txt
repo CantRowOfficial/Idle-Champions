@@ -5,14 +5,21 @@ This will be the project global log until I learn how to use GitHub correctly.
 Issues/Fixes Needed
 -------------------
 
-    1. Haste stacks not displayed on Stats tab while SteelBones are. Debug tab shows accurate SteelBones and Haste stacks. Identical code to mikebaldi's Steam ModronGUI that properly shows Haste Stacks.
+    1. Epic Games Store treats IdleCombos.exe as an instance of IdleDragons.exe. EGS will not allow IC to relaunch during Briv Restart Stacking if IdleCombos.exe is running. Steam does not have this issue. Further investigation needed.
 
-    2. Epic Games Store treats IdleCombos.exe as an instance of IdleDragons.exe. EGS will not allow IC to relaunch during Briv Restart Stacking if IdleCombos.exe is running. Steam does not have this issue. Further investigation needed.
-
-    3. classMemory.ahk indicates that AHK does not support large 64bit integers. See notes of classMemory.ahk for more information. Possible script failures may be due to reads outside of 32bit range and unsigned 64bit integers are processed incorrectly.
+    2. classMemory.ahk indicates that AHK does not support large 64bit integers. See notes of classMemory.ahk for more information. Possible script failures may be due to reads outside of 32bit range and unsigned 64bit integers are processed incorrectly.
+	
+	3. States that there is a familiar in "W" formation when one is not present. Find out why. 
 
 Future Planned Updates/Features
 -------------------------------
 
     1. Create secondary NonModronGUI.ahk for memory scripted restarts without Modron Automation from ModronGUI.ahk and ManualModronResetSnippets.ahk from Meviin.
         1a. Create instructions for use of NonModronGUI.ahk.
+		
+	2. Update readme.txt with more specified language detailing purpose of this repository.
+		2a. Make clear general requirements needed before using this gem farming scripting. (Or gem farming in general.)
+		2b. How to start working towards them.
+	
+	3. Add references for other resources mantained by other members of the community.
+		*note: Lots of information and rules of thumb are scattered around. Concise list would be helpful.
