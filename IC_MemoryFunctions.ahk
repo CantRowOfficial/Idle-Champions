@@ -1,12 +1,12 @@
 ;Updates installed after the date of this script may result in the pointer addresses no longer being accurate.
-;date of script: 5/23/21
-;Epic Games IC Version v0.391
+;date of script: 6/25/21
+;Epic Games IC Version v0.394
 
 global idle := new _ClassMemory("ahk_exe IdleDragons.exe", "", hProcessCopy)
 
 ;Game Controller Structure
 global pointerBaseController :=
-global arrayPointerOffsetsController := [0x150, 0x580, 0x198]
+global arrayPointerOffsetsController := [0x150, 0xD38, 0x18]
 
 ;Open a process with sufficient access to read and write memory addresses (this is required before you can use the other functions)
 ;You only need to do this once. But if the process closes/restarts, then you will need to perform this step again. Refer to the notes section below.
@@ -56,11 +56,11 @@ ReadGemsSpent(UpdateGUI := 0, GUIwindow := "MyWindow:")
 ReadRedGems(UpdateGUI := 0, GUIwindow := "MyWindow:")
 {
     Controller := idle.getAddressFromOffsets(pointerBaseController, arrayPointerOffsetsController*)
-    pointerArray := [0xA0, 0x30, 0x280]
+    pointerArray := [0xA0, 0x30, 0x288]
     var := idle.read(Controller, "Int", pointerArray*)
     if UpdateGUI
     GuiControl, %GUIwindow%, ReadRedGemsID, %var% %A_Hour%:%A_Min%:%A_Sec%.%A_MSec%
-	return var
+    return var
 }
 
 ReadQuestRemaining(UpdateGUI := 0, GUIwindow := "MyWindow:")
@@ -96,27 +96,27 @@ ReadTransitioning(UpdateGUI := 0, GUIwindow := "MyWindow:")
 ReadSBStacks(UpdateGUI := 0, GUIwindow := "MyWindow:")
 {
     Controller := idle.getAddressFromOffsets(pointerBaseController, arrayPointerOffsetsController*)
-    pointerArray := [0xA0, 0x30, 0x2E0]
+    pointerArray := [0xA0, 0x30, 0x2E8]
     var := idle.read(Controller, "Int", pointerArray*)
     if UpdateGUI
     {
         GuiControl, %GUIwindow%, ReadSBStacksID, %var% %A_Hour%:%A_Min%:%A_Sec%.%A_MSec%
         GuiControl, %GUIwindow%, gStackCountSBID, %var%
     }
-	return var
+    return var
 }
 
 ReadHasteStacks(UpdateGUI := 0, GUIwindow := "MyWindow:")
 {
     Controller := idle.getAddressFromOffsets(pointerBaseController, arrayPointerOffsetsController*)
-    pointerArray := [0xA0, 0x30, 0x2E4]
+    pointerArray := [0xA0, 0x30, 0x2EC]
     var := idle.read(Controller, "Int", pointerArray*)
     if UpdateGUI
-	{
+    {
 		GuiControl, %GUIwindow%, ReadHasteStacksID, %var% %A_Hour%:%A_Min%:%A_Sec%.%A_MSec%
 		GuiControl, %GUIwindow%, gStackCountHID, %var%
 	}
-	return var
+    return var
 }
 
 ReadCoreXP(UpdateGUI := 0, GUIwindow := "MyWindow:")
