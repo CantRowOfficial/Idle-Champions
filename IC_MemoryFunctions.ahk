@@ -1,5 +1,5 @@
 ;Updates installed after the date of this script may result in the pointer addresses no longer being accurate.
-;date of script: 6/25/21
+;date of script: 6/30/21
 ;Epic Games IC Version v0.394
 
 global idle := new _ClassMemory("ahk_exe IdleDragons.exe", "", hProcessCopy)
@@ -30,6 +30,16 @@ ReadCurrentZone(UpdateGUI := 0, GUIwindow := "MyWindow:")
 	var := idle.read(Controller, "Int", pointerArray*)
     if UpdateGUI
     GuiControl, %GUIwindow%, ReadCurrentZoneID, %var% %A_Hour%:%A_Min%:%A_Sec%.%A_MSec%
+	return var
+}
+
+ReadHighestZone(UpdateGUI := 0, GUIwindow := "MyWindow:")
+{
+	Controller := idle.getAddressFromOffsets(pointerBaseController, arrayPointerOffsetsController*)
+    pointerArray := [0x30, 0x90]
+	var := idle.read(Controller, "Int", pointerArray*)
+    if UpdateGUI
+    GuiControl, %GUIwindow%, ReadHighestZoneID, %var% %A_Hour%:%A_Min%:%A_Sec%.%A_MSec%
 	return var
 }
 
@@ -250,6 +260,34 @@ ReadChampSeatByID(UpdateGUI := 0, GUIwindow := "MyWindow:", ChampID := 0)
     if UpdateGUI
     ++ChampID
     GuiControl, %GUIwindow%, ReadChampSeatByIDID, `ID: %ChampID% Seat: %var% %A_Hour%:%A_Min%:%A_Sec%.%A_MSec%
+	return var
+}
+
+ReadChampSlotByID(UpdateGUI := 0, GUIwindow := "MyWindow:", ChampID := 0)
+{
+    Controller := idle.getAddressFromOffsets(pointerBaseController, arrayPointerOffsetsController*)
+    pointerArray := [0xA0, 0x10, 0x18, 0x10]
+    --ChampID
+    var := 0x20 + (ChampID * 0x18)
+    pointerArray.Push(var, 0x2C0)
+    var := idle.read(Controller, "Int", pointerArray*)
+    if UpdateGUI
+    ++ChampID
+    GuiControl, %GUIwindow%, ReadChampSlotByIDID, `ID: %ChampID% Slot: %var% %A_Hour%:%A_Min%:%A_Sec%.%A_MSec%
+	return var
+}
+
+ReadChampBenchedByID(UpdateGUI := 0, GUIwindow := "MyWindow:", ChampID := 0)
+{
+    Controller := idle.getAddressFromOffsets(pointerBaseController, arrayPointerOffsetsController*)
+    pointerArray := [0xA0, 0x10, 0x18, 0x10]
+    --ChampID
+    var := 0x20 + (ChampID * 0x8)
+    pointerArray.Push(var, 0x2CC)
+    var := idle.read(Controller, "Char", pointerArray*)
+    if UpdateGUI
+    ++ChampID
+    GuiControl, %GUIwindow%, ReadChampBenchedByIDID, `ID: %ChampID% Benched: %var% %A_Hour%:%A_Min%:%A_Sec%.%A_MSec%
 	return var
 }
 
