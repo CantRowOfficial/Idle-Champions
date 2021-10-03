@@ -115,7 +115,7 @@ up on boss zones.
 
 ### Uncheck if using a familiar on click damage
 
-When this box is checked, the script will input '`' key to level up click
+When this box is checked, the script will input '\`' key to level up click
 damage, requiring one less familiar on gem runs.
 
 ### Enable manual resets to recover from failed Briv stacking
